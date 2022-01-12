@@ -11,6 +11,7 @@ import quantstats as qs
 pd.options.display.float_format = '{:.4f}'.format
 pd.set_option('display.max_columns', None)
 
+start_day = datetime(2008,1,1) # 시작일
 end_day = datetime(2021,11,30) # 종료일
 
 # RU = Risky Universe
