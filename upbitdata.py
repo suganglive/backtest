@@ -1,14 +1,28 @@
 import pyupbit
+import pandas as pd
+import openpyxl
 
-tkrs = pyupbit.get_tickers(fiat='KRW')
 
-current_prices = pyupbit.get_current_price(["KRW-BTC", "KRW-ETH"])
+tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP', 'KRW-DOGE', 'KRW-LTC']
 
-ticker = 'KRW-BTC'
-interval = 'day'
-to = '2022-01-27'
-count = 10
 
-a = pyupbit.get_ohlcv(ticker=ticker, interval=interval, to=to, count = count)
 
-print(type(a))
+for i in tickers:
+
+    ticker = i
+    interval = 'day'
+    to = '2100-01-01'
+    a = pyupbit.get_ohlcv(ticker=ticker, interval=interval, to=to, count=3)
+    
+    with pd.ExcelWriter('practice.xlsx') as writer:
+        a.to_excel(writer, sheet_name=i)
+    
+
+
+
+# path = 'pandas_to_excel.xlsx'
+
+# with pd.ExcelWriter(path) as writer:
+#     writer.book = openpyxl.load_workbook(path)
+#     df.to_excel(writer, sheet_name='new_sheet1')
+#     df2.to_excel(writer, sheet_name='new_sheet2')
