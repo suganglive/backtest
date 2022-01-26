@@ -11,4 +11,4 @@ count = 10
 
 a = pyupbit.get_ohlcv(ticker=ticker, interval=interval, to=to, count = count)
 
-print(a)
+print(type(a))
