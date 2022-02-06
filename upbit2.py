@@ -3,7 +3,7 @@ import pandas as pd
 import openpyxl
 
 
-tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP', 'KRW-LSK', 'KRW-QTUM']
+tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP', 'KRW-LTC']
 
 df1 = pd.DataFrame()
 df1.to_excel("hi1.xlsx")
