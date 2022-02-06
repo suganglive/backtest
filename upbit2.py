@@ -12,5 +12,5 @@ with pd.ExcelWriter('hi1.xlsx', mode='a') as writer:
     for i in tickers:
         interval = 'day'
         to = '2100-01-01'
-        a = pyupbit.get_ohlcv(ticker=i, interval=interval, to=to, count=3000)
+        a = pyupbit.get_daily_ohlcv_from_base("KRW-BTC", base=1)
         a.to_excel(writer, sheet_name=i)
