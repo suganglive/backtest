@@ -43,8 +43,7 @@ dfs['P_R'] = (dfs['btc_R'] * dfs['btc_target_s'] * dfs['btc_ma5_s'] * dfs['btc_p
               dfs['xrp_R'] * dfs['xrp_target_s'] * dfs['xrp_ma5_s'] * dfs['xrp_percentage'] +
               dfs['ltc_R'] * dfs['ltc_target_s'] * dfs['ltc_ma5_s'] * dfs['ltc_percentage']) + 1
 
-P_R = dfs['P_R'].cumprod()[-2]
-print(P_R)
+dfs['hpr'] = dfs['P_R'].cumprod()
 
 
 dfs.to_excel("kimchi.xlsx")
