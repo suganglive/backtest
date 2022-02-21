@@ -81,12 +81,11 @@ def hihi(k=0.5, target_v = 0.05):
 hihi(k=0.9, target_v=0.2)
 
 # for k in np.arange(0.1, 1, 0.1):
-#     for v in np.arange(0.01, 0.11, 0.01):
+#     for v in np.arange(0.1, 0.3, 0.01):
 #         s = hihi(k, v)[0]
 #         cagr = hihi(k, v)[1]
 #         mdd = hihi(k, v)[2]
 #         print(f'cagr = {cagr}, mdd = {mdd} , target_v = {v}, k = {k}, s = {s}')
-# k = 0.9
 
 # for v in np.arange(0.01, 0.3, 0.01):
 #     s = hihi(k, v)[0]
