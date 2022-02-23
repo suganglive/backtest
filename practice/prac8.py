@@ -69,8 +69,8 @@ def hihi(k=0.5, target_v = 0.05):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
-    df.to_excel("11h_0.5k_0.05v.xlsx")
+    df.to_excel("11h_0.8k_0.05v.xlsx")
     return s, cagr, mdd
 
 df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/11h.xlsx')
-hihi(k=0.5, target_v=0.05)
+hihi(k=0.8, target_v=0.05)
