@@ -1,11 +1,11 @@
-#bi 11h 0.5 0.5
+#11h 1month backtest
 import pyupbit
 import numpy as np
 import pandas as pd
 import datetime
 import logging
 
-logging.basicConfig(filename='prac7.log', level=logging.INFO, format='%(message)s')
+logging.basicConfig(filename='binance11h.log', level=logging.INFO, format='%(message)s')
 hours = ['1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h', '0h']
 
 k = 0.5
@@ -69,16 +69,8 @@ def hihi(k=0.5, target_v = 0.05):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
+    df.to_excel("bi_11h_backtest.xlsx")
     return s, cagr, mdd
 
-df = pd.read_excel('bi_11h.xlsx')
-print(hihi()[0], hihi()[1], hihi()[2])
-
-
-# df = pd.read_excel('bi_11h.xlsx')
-# for k in np.arange(0.1, 1, 0.1):
-#     for v in np.arange(0.01, 0.2, 0.01):
-#         s = hihi(k, v)[0]
-#         cagr = hihi(k, v)[1]
-#         mdd = hihi(k, v)[2]
-#         logging.info(f'{k}, {v}, {cagr}, {mdd}')
+df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/bi_11h.xlsx')
+hihi(k=0.5, target_v=0.05)

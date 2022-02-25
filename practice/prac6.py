@@ -10,7 +10,8 @@ def get_daily_ohlcv_from_base(ticker="KRW-BTC", base=0):
     :return:
     """
     try:
-        df = pyupbit.get_ohlcv(ticker, interval="minute60", count=37898)
+        # df = pyupbit.get_ohlcv(ticker, interval="minute60", count=37898)
+        df = pyupbit.get_ohlcv("KRW-BTC", interval="minute60", count=13737)
         # df = pyupbit.get_ohlcv(ticker, interval="minute60")
         df = df.resample('24H', offset=base).agg(
             {'open': 'first', 'high': 'max', 'low': 'min', 'close': 'last', 'volume': 'sum'})
@@ -18,7 +19,10 @@ def get_daily_ohlcv_from_base(ticker="KRW-BTC", base=0):
     except Exception as x:
         return None
 
-hours = ['3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h']
+
+
+
+hours = ['1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h', '0h']
 for hour in hours:
     ss = {'btc': get_daily_ohlcv_from_base("KRW-BTC", base = hour), 'eth': get_daily_ohlcv_from_base("KRW-ETH", base = hour),
         'xrp': get_daily_ohlcv_from_base("KRW-XRP", base = hour), 'ltc': get_daily_ohlcv_from_base("KRW-LTC", base = hour)}
@@ -38,5 +42,5 @@ for hour in hours:
 
     dfs = dfs.drop(range(0, 8))
 
-    dfs.to_excel(f'/Users/sugang/Documents/GitHub/backtest/data/{hour}.xlsx')
+    dfs.to_excel(f'/Users/sugang/Documents/GitHub/backtest/data/up_{hour}.xlsx')
     print(f'{hour}-done')

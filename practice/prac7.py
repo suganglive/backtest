@@ -5,7 +5,7 @@ import pandas as pd
 import datetime
 import logging
 
-logging.basicConfig(filename='prac7.log', level=logging.INFO, format='%(message)s')
+logging.basicConfig(filename='prac7_up.log', level=logging.INFO, format='%(message)s')
 hours = ['1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h', '0h']
 
 k = 0.5
@@ -75,7 +75,7 @@ def hihi(k=0.5, target_v = 0.05):
 # logging.info(hihi()[0])
 
 for hour in (hours):
-    df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/{hour}.xlsx')
+    df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/up_{hour}.xlsx')
     for k in np.arange(0.1, 1, 0.1):
         for v in np.arange(0.01, 0.2, 0.01):
             s = hihi(k, v)[0]

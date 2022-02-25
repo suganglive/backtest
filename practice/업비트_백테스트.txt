@@ -1,0 +1,4 @@
+업비트 백테스트:
+prac6에서 pyupbit.get_ohlcv로 전체 데이터 가져옴과 동시에 시간별로 분리
+prac7에서 hour, k, v, cagr, mdd구하기
+prac8에서 개별 엑셀 자료 구하기
