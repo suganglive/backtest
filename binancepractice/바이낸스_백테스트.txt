@@ -3,3 +3,5 @@ https://www.cryptodatadownload.com/data/binance/ 여기 가서 hourly데이터 �
 csv 파일 엑셀로 켜서 null파일 삭제하고 각각 다른 엑셀 파일로 인덱스(날짜), open, high, low, close로 분리
 바이_시간별_자료분리.py에서 시간별로 데이터 분리
 바이_최종_수치구하기.py에서 hour, k, v, cagr, mdd구하기
+9시간 시차남 -> dfs.index = dfs.index + datetime.timedelta(hours=9) 로 해결
+

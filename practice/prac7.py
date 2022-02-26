@@ -69,16 +69,21 @@ def hihi(k=0.5, target_v = 0.05):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
+    df.to_excel("/Users/sugang/Documents/GitHub/backtest/data/check_list.xlsx")
     return s, cagr, mdd
 
 # df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/1h.xlsx')
 # logging.info(hihi()[0])
 
-for hour in (hours):
-    df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/up_{hour}.xlsx')
-    for k in np.arange(0.1, 1, 0.1):
-        for v in np.arange(0.01, 0.2, 0.01):
-            s = hihi(k, v)[0]
-            cagr = hihi(k, v)[1]
-            mdd = hihi(k, v)[2]
-            logging.info(f'{hour}, {k}, {v}, {cagr}, {mdd}')
+# for hour in (hours):
+#     df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/up_{hour}.xlsx')
+#     for k in np.arange(0.1, 1, 0.1):
+#         for v in np.arange(0.01, 0.2, 0.01):
+#             s = hihi(k, v)[0]
+#             cagr = hihi(k, v)[1]
+#             mdd = hihi(k, v)[2]
+#             logging.info(f'{hour}, {k}, {v}, {cagr}, {mdd}')
+
+df = pd.read_excel("/Users/sugang/Documents/GitHub/backtest/data/check.xlsx")
+df = hihi(k=0.5, target_v=0.05)
+print(df)

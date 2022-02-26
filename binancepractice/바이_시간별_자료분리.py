@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import datetime
 
 def get_daily_ohlcv_from_base(ticker = "hi", base=0):
     """
@@ -9,6 +10,7 @@ def get_daily_ohlcv_from_base(ticker = "hi", base=0):
     """
     try:
         df = pd.read_excel(f"/Users/sugang/Documents/GitHub/backtest/binancedata/bi_{ticker}_long.xlsx", index_col=0)
+        df.index = df.index + datetime.timedelta(hours=9)
         df = df.resample('24H', offset=base).agg(
             {'open': 'first', 'high': 'max', 'low': 'min', 'close': 'last'})
         return df
@@ -28,7 +30,7 @@ for hour in hours:
     dfs = dfs[['btc_open', 'eth_open', 'xrp_open', 'ltc_open', 'btc_high', 'eth_high', 'xrp_high', 'ltc_high',
                 'btc_low', 'eth_low', 'xrp_low', 'ltc_low', 'btc_close', 'eth_close', 'xrp_close', 'ltc_close']]
 
-    dfs.to_excel(f'/Users/sugang/Documents/GitHub/backtest/binancedata/bi_{hour}.xlsx')
+    dfs.to_excel(f'/Users/sugang/Documents/GitHub/backtest/binancedata/bi_{hour}_timeadj.xlsx')
 
     # dfs = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/{hour}.xlsx')
 
