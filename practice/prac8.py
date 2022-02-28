@@ -57,7 +57,7 @@ def hihi(k=0.5, target_v = 0.05):
 
     df['MDD'] = df['P_B']/df['P_B'].cummax() -1
 
-    s = df['P_B'][length - 1]
+    s = df['P_B'][length - 1] -1
     cagr = s ** (1/(length/365)) - 1
     mdd = df['MDD'].min()
 
