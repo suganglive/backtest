@@ -57,7 +57,7 @@ def hihi(k=0.5, target_v = 0.05):
 
     df['MDD'] = df['P_B']/df['P_B'].cummax() -1
 
-    s = df['P_B'][length - 1] -1
+    s = df['P_B'][length - 1]
     cagr = s ** (1/(length/365)) - 1
     mdd = df['MDD'].min()
 
@@ -69,10 +69,8 @@ def hihi(k=0.5, target_v = 0.05):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
-    df.to_excel("check.xlsx")
+    df.to_excel(f'/Users/sugang/Documents/GitHub/backtest/hey.xlsx')
     return s, cagr, mdd
 
-# df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/data/9h.xlsx')
-# df = pyupbit.get_ohlcv("KRW-BTC", "day", count=200)
-# df = df[['btc']]
-# aaa = hihi(k=0.5, target_v=0.05)
+df = pd.read_excel(f'/Users/sugang/Documents/GitHub/backtest/hey.xlsx')
+hihi()

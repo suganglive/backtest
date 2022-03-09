@@ -46,8 +46,8 @@ def get_daily_ohlcv_from_base(ticker="KRW-BTC", base=0):
 #     print(f'{hour}-done')
 
 
-ss = {'btc': get_daily_ohlcv_from_base("KRW-BTC", base = '9h'), 'eth': get_daily_ohlcv_from_base("KRW-ETH", base = '9h'),
-    'xrp': get_daily_ohlcv_from_base("KRW-XRP", base = '9h'), 'ltc': get_daily_ohlcv_from_base("KRW-LTC", base = '9h')}
+ss = {'btc': get_daily_ohlcv_from_base("KRW-BTC", base = '10h'), 'eth': get_daily_ohlcv_from_base("KRW-ETH", base = '10h'),
+    'xrp': get_daily_ohlcv_from_base("KRW-XRP", base = '10h'), 'ltc': get_daily_ohlcv_from_base("KRW-LTC", base = '10h')}
 
 for i in ss:
     del ss[i]['volume']
@@ -58,4 +58,4 @@ dfs = pd.concat([ss['btc'], ss['eth'], ss['xrp'], ss['ltc']], axis=1)
 dfs = dfs[['btc_open', 'eth_open', 'xrp_open', 'ltc_open', 'btc_high', 'eth_high', 'xrp_high', 'ltc_high',
                 'btc_low', 'eth_low', 'xrp_low', 'ltc_low', 'btc_close', 'eth_close', 'xrp_close', 'ltc_close']]
 
-dfs.to_excel('/Users/sugang/Documents/GitHub/backtest/data/check.xlsx')
+dfs.to_excel('/Users/sugang/Documents/GitHub/backtest/hey.xlsx')
