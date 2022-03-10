@@ -20,6 +20,7 @@ for tick in tickers:
     except:
         print(f"{tick}_error")
 
+
 # for c in coins:
     # df[c] = 
 # sorted_d = dict(sorted(dct.items(), key=operator.itemgetter(1), reverse=True))
