@@ -6,8 +6,8 @@ import numpy as np
 
 # logging.basicConfig(filename='upbit8.log', level=logging.INFO, format='%(created)f:%(message)s')
 
-# tickers = pyupbit.get_tickers("KRW")
-tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP']
+tickers = pyupbit.get_tickers("KRW")
+# tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP']
 dct2 = {}
 dct = {}
 df = pd.DataFrame()
@@ -36,7 +36,7 @@ df2 = df2.rank(method='min', ascending=False, axis=1)
 df = pd.concat([df, df2], axis=1)
 
 for ticker in tickers:
-    df[f'{ticker}_1/0'] = np.where(df[f'{ticker}'] <= 2, 1, 0)
+    df[f'{ticker}_1/0'] = np.where(df[f'{ticker}'] <= 5, 1, 0)
 
 k = 0.5
 target_v = 0.05
@@ -110,7 +110,7 @@ def hihi(k=0.5, target_v = 0.05):
 #     df.at[df.index[1], 'result_2'] = cagr
 #     df.at[df.index[2], 'result_2'] = mdd
     
-    df.to_excel("joke.xlsx")
+    df.to_excel("joke1.xlsx")
 #     return s, cagr, mdd
 
 df = hihi()
