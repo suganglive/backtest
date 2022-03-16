@@ -4,7 +4,7 @@ import pyupbase as pb
 
 ### 모든 tickers 기본 정보 구하기 ###
 # tickers = pyupbit.get_tickers("KRW")
-tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP', 'KRW-LTC']
+# tickers = ['KRW-BTC', 'KRW-ETH', 'KRW-XRP', 'KRW-LTC']
 dct = {}
 df = pd.DataFrame()
 for i in tickers:
