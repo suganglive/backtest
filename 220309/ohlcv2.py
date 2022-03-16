@@ -78,7 +78,7 @@ def hihi(k=0.5, target_v = 0.05):
     for i in tickers:
         df[f'{i}_R_2'] = df[f'{i}_R'] * df[f'{i}_signal'] * df[f'{i}_percent'] * df[f'{i}_1/0']
     
-    # df['R'] = 0
+    df['R'] = 0
     
     # for i in tickers:
     #     df['R'] = df['R'] + df[f'{i}_R_2']

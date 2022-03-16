@@ -1,9 +1,7 @@
 import pyupbit
 import operator
 import pandas as pd
-import numpy as np
 
-# tickers = pyupbit.get_tick_size()
 def get_tickers():
     tickers = pyupbit.get_tickers("KRW")
 
@@ -25,5 +23,3 @@ def get_tickers():
     a = list(sorted_d.keys())[:5]
     return a
 
-b = get_tickers()
-print(b)
