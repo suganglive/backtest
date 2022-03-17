@@ -5,6 +5,6 @@ lst = ['가타카나 아','가타카나 이', '가타카나 우', '가타카나 
 
 random.shuffle(lst)
 a = 0
-for i in range(0, 30):
+for i in range(1, 31):
     print(i, lst.pop())
     time.sleep(5)
