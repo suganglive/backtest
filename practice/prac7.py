@@ -84,6 +84,6 @@ def hihi(k=0.5, target_v = 0.05):
 #             mdd = hihi(k, v)[2]
 #             logging.info(f'{hour}, {k}, {v}, {cagr}, {mdd}')
 
-df = pd.read_excel("/Users/sugang/Documents/GitHub/backtest/data/check.xlsx")
+df = pd.read_excel('/Users/sugang/Documents/GitHub/backtest/hey.xlsx')
 df = hihi(k=0.5, target_v=0.05)
 print(df)

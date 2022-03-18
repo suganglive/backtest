@@ -12,7 +12,8 @@ def get_daily_ohlcv_from_base(ticker="KRW-BTC", base=0):
     try:
         # df = pyupbit.get_ohlcv(ticker, interval="minute60", count=37898)
         # df = pyupbit.get_ohlcv("KRW-BTC", interval="minute60", count=13737)
-        df = pyupbit.get_ohlcv(ticker, interval="minute60", count=240)
+        # df = pyupbit.get_ohlcv(ticker, interval="minute60", count=240)
+        df = pyupbit.get_ohlcv(ticker, interval="minute60", count=8760)
         df = df.resample('24H', offset=base).agg(
             {'open': 'first', 'high': 'max', 'low': 'min', 'close': 'last', 'volume': 'sum'})
         return df

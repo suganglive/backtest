@@ -3,15 +3,22 @@ import pandas as pd
 import numpy as np
 import pyupbase as pb
 
+# hours = ['1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h', '0h']
+# for h in hours:
 ### 기본 자료 불러오기 ###
 tickers = pyupbit.get_tickers("KRW")
-df = pd.read_excel("/Users/sugang/Documents/GitHub/backtest/220316/test.xlsx", index_col=0)
+# tickers.remove("KRW-CELO")
+# df = pd.read_excel("/Users/sugang/Documents/GitHub/backtest/220316/test.xlsx", index_col=0)
+# df = pd.read_excel(f"/Users/sugang/Documents/GitHub/backtest/alldata1y/{h}_shift_all.xlsx", index_col=0)
+# df = pd.read_excel(f"/Users/sugang/Documents/GitHub/backtest/alldata1y/{h}_all.xlsx", index_col=0)
+df = pd.read_excel('/Users/sugang/Documents/GitHub/backtest/220316/test.xlsx', index_col=0)
 
 ### 각 rank 정하기, 실행 여부 파악 ###
 df2 = pd.DataFrame.copy(df)
 # print(df)
 for i in tickers:
     del df2[f'{i}_open'], df2[f'{i}_high'], df2[f'{i}_low'], df2[f'{i}_close']
+    # del df2[f'{i}_open'], df2[f'{i}_high'], df2[f'{i}_low'], df2[f'{i}_close'], df2[f'{i}_vol']
 
 df2.columns = tickers
 df2 = df2.rank(method='min', ascending=False, axis=1)
@@ -20,12 +27,15 @@ df = pd.concat([df, df2], axis=1)
 
 for i in tickers:
     df[f'{i}_1/0'] = np.where(df[f'{i}'] <= 5, 1, 0)
+    # df[f'{i}_1/0'] = np.where(df[f'{i}'] <= 15, 1, 0)
 
 ### 백테스트 ###
 k = 0.5
 target_v = 0.05
 slpy = 0.002
 amount = 5
+# amount = 10
+# amount = 15
 
 def hihi(k=0.5, target_v = 0.05):
     for i in tickers:
@@ -87,9 +97,9 @@ def hihi(k=0.5, target_v = 0.05):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
-    df.to_excel("/Users/sugang/Documents/GitHub/backtest/220316/ohlcv_test.xlsx")
+    # df.to_excel("/Users/sugang/Documents/GitHub/backtest/220316/ohlcv_test3.xlsx")
     return s, cagr, mdd
 
-a = hihi()
+a = hihi(k = 0.8, target_v= 0.5)
 print(a)
 

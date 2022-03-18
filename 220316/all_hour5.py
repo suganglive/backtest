@@ -18,8 +18,16 @@ for i in tickers:
         dct[i][f"{i}_vol"] = vol1 * close
         dct[i][f"{i}_vol"] = dct[i][f"{i}_vol"].shift(1)
         df = pd.concat([df, dct[i]], axis=1)
-        time.sleep(1)
     except Exception as e:
         print(i, ' error :', str(e))
 
-df.to_excel('/Users/sugang/Documents/GitHub/backtest/220316/test.xlsx')
+### 각 rank 정하기, 실행 여부 파악 ###
+df2 = pd.DataFrame.copy(df)
+for i in tickers:
+    del df2[f'{i}_open'], df2[f'{i}_high'], df2[f'{i}_low'], df2[f'{i}_close']
+
+df2.columns = tickers
+df2 = df2.rank(method='min', ascending=False, axis=1)
+df = pd.concat([df, df2], axis=1)
+
+df.to_excel('/Users/sugang/Documents/GitHub/backtest/220316/letsgo2.xlsx')
