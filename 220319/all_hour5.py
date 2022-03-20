@@ -30,4 +30,4 @@ df2.columns = tickers
 df2 = df2.rank(method='min', ascending=False, axis=1)
 df = pd.concat([df, df2], axis=1)
 
-df.to_excel('/Users/sugang/Documents/GitHub/backtest/220319/test0319.xlsx')
+df.to_excel('/Users/sugang/Documents/GitHub/backtest/220319/test0320.xlsx')
