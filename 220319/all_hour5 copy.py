@@ -11,7 +11,7 @@ dct = {}
 df = pd.DataFrame()
 for i in tickers:
     try:
-        dct[i] = pb.get_daily_ohlcv_from_base(i, base='16h')
+        dct[i] = pb.get_daily_ohlcv_from_base(i, base='9h')
         dct[i].columns = [f"{i}_open", f"{i}_high", f"{i}_low", f"{i}_close", f"{i}_vol"]
         vol1 = dct[i][f"{i}_vol"].rolling(window=5).mean()
         close = dct[i][f"{i}_close"].rolling(window=5).mean()
@@ -30,4 +30,4 @@ df2.columns = tickers
 df2 = df2.rank(method='min', ascending=False, axis=1)
 df = pd.concat([df, df2], axis=1)
 
-df.to_excel('/Users/sugang/Documents/GitHub/backtest/220319/test0320_16h.xlsx')
+df.to_excel('/Users/sugang/Documents/GitHub/backtest/220319/test0322_9h.xlsx')

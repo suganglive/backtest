@@ -19,7 +19,7 @@ import pyupbase as pb
 
 ### 기본 자료 불러오기 ###
 tickers = pyupbit.get_tickers("KRW")
-df = pd.read_excel('/Users/sugang/Documents/GitHub/backtest/220319/test0320_16h.xlsx', index_col=0)
+df = pd.read_excel('/Users/sugang/Documents/GitHub/backtest/220319/test0322_9h.xlsx', index_col=0)
 
 # ### 각 rank 정하기, 실행 여부 파악 ###
 # df2 = pd.DataFrame.copy(df)
@@ -104,7 +104,7 @@ def hihi(k=0.8, target_v = 0.2, am = 15, m = 5):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
-    df.to_excel("/Users/sugang/Documents/GitHub/backtest/220319/test0320_16h_1.xlsx")
+    df.to_excel("/Users/sugang/Documents/GitHub/backtest/220319/test0322_9h_1.xlsx")
     return s, cagr, mdd
 
 # for hour in (hours):
