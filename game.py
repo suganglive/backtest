@@ -11,7 +11,7 @@ random.shuffle(lst)
 a = 0
 for i in range(1, 47):
     print(i, lst.pop())
-    time.sleep(10)
+    time.sleep(5)
 
 # for i in range(1, 21):
 #     print(i, lst.pop())
