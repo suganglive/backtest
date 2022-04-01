@@ -7,7 +7,7 @@ import ranking as rkg
 tickers = pyupbit.get_tickers("KRW")
 
 ### 백테스트 ###
-k = 0.8
+k = 0.5
 target_v = 0.2
 ma = 10
 slpy = 0.002
