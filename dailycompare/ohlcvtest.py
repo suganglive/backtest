@@ -7,13 +7,13 @@ import ranking as rkg
 tickers = pyupbit.get_tickers("KRW")
 
 ### 백테스트 ###
-k = 0.5
+k = 0.8
 target_v = 0.2
 ma = 10
 slpy = 0.002
 am = 20
 
-def hihi(k=0.8, target_v = 0.2, am = 15, m = 5):
+def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
     for i in tickers:
         df[f'{i}_1/0'] = np.where(df[f'{i}'] <= am, 1, 0)
 
