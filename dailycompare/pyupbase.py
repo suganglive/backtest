@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import time
 
-def get_daily_ohlcv_from_base(ticker="KRW-BTC", base='10h'):
+def get_daily_ohlcv_from_base(ticker="KRW-BTC", base='11h'):
     """
     :param ticker:
     :param base:
