@@ -7,7 +7,7 @@ import ranking as rkg
 tickers = pyupbit.get_tickers("KRW")
 
 ### 백테스트 ###
-k = 0.5
+k = 0.55
 target_v = 0.2
 ma = 10
 slpy = 0.002
@@ -32,13 +32,13 @@ def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
         df[f'{i}_ma_n'] = df[f'{i}_open'].rolling(window=m).mean()
 
     for i in tickers:
-        df[f'{i}_h>t'] = np.where(df[f'{i}_high'] > df[f'{i}_target'], 1, 0)
+        df[f'{i}_h>=t'] = np.where(df[f'{i}_high'] >= df[f'{i}_target'], 1, 0)
 
     for i in tickers:
         df[f'{i}_o>m'] = np.where(df[f'{i}_open'] > df[f'{i}_ma_n'], 1, 0)
 
     for i in tickers:
-        df[f'{i}_Signal'] = df[f'{i}_o>m'] * df[f'{i}_h>t'] * df[f'{i}_1/0']
+        df[f'{i}_Signal'] = df[f'{i}_o>m'] * df[f'{i}_h>=t'] * df[f'{i}_1/0']
 
     for i in tickers:
         df[f'{i}_percent'] = np.where(
