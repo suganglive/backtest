@@ -2,16 +2,79 @@ import pyupbit
 import pandas as pd
 import numpy as np
 import ranking as rkg
+import math
 
 ### 기본 자료 불러오기 ###
 tickers = pyupbit.get_tickers("KRW")
 
 ### 백테스트 ###
-k = 0.55
+k = 0.5
 target_v = 0.2
 ma = 10
 slpy = 0.002
 am = 20
+
+def buyable(ticker):
+    price = ticker
+    # price = price * 1.002
+    if price - 1 < 0:
+        if price * 10 - 1 < 0:
+            price = price * 10000
+            if price != int(price):
+                price = price + 1
+            price = math.floor(price)
+            price = price / 10000
+        else:
+            price = price * 1000
+            price = math.floor(price)
+            price = price + 1
+            price = price / 1000
+    elif len(str(math.floor(price))) == 1:
+        price = price * 100
+        price = math.floor(price)
+        price = price + 1
+        price = price / 100
+    elif len(str(math.floor(price))) == 2:
+        price = price * 10
+        price = math.floor(price)
+        price = price + 1
+        price = price / 10
+    elif len(str(math.floor(price))) == 3:
+        price = math.floor(price)
+        # price = price + 1
+    elif len(str(math.floor(price))) == 4:
+        if price % 10 <= 5: 
+            price = price / 10
+            price = math.floor(price)
+            price = price * 10
+            # price = price + 5
+        else:
+            price = price / 10
+            price = math.floor(price)
+            price = price * 10
+            # price = price + 10
+    elif len(str(math.floor(price))) == 5:
+        price = price / 10
+        price = math.floor(price)
+        # price = price + 1
+        price = price * 10
+    elif len(str(math.floor(price))) == 6:
+        if (price/10) % 10 <= 5: 
+            price = price / 100
+            price = math.floor(price)
+            price = price * 100
+            # price = price + 50
+        else:
+            price = price / 100
+            price = math.floor(price)
+            price = price * 100
+            # price = price + 100
+    elif len(str(math.floor(price))) >=7:
+            price = price / 1000
+            price = math.floor(price)
+            price = price * 1000
+            # price = price + 1000
+    return price
 
 def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
     for i in tickers:
@@ -27,6 +90,8 @@ def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
 
     for i in tickers:
         df[f'{i}_target'] = df[f'{i}_open'] + (df[f'{i}_range'] * k)
+        # if df[f'{i}_target'] <= 500:
+        #     df[f'{i}_target'] = buyable(df[f'{i}_target'])
 
     for i in tickers:
         df[f'{i}_ma_n'] = df[f'{i}_open'].rolling(window=m).mean()
