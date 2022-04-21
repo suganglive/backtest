@@ -14,9 +14,7 @@ ma = 10
 slpy = 0.002
 am = 20
 
-def buyable(ticker):
-    price = ticker
-    # price = price * 1.002
+def buyable(price):
     if price - 1 < 0:
         if price * 10 - 1 < 0:
             price = price * 10000
@@ -53,27 +51,6 @@ def buyable(ticker):
             price = math.floor(price)
             price = price * 10
             price = price + 10
-    elif len(str(math.floor(price))) == 5:
-        price = price / 10
-        price = math.floor(price)
-        price = price + 1
-        price = price * 10
-    elif len(str(math.floor(price))) == 6:
-        if (price/10) % 10 <= 5: 
-            price = price / 100
-            price = math.floor(price)
-            price = price * 100
-            price = price + 50
-        else:
-            price = price / 100
-            price = math.floor(price)
-            price = price * 100
-            price = price + 100
-    elif len(str(math.floor(price))) >=7:
-            price = price / 1000
-            price = math.floor(price)
-            price = price * 1000
-            price = price + 1000
     return price
 
 def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
@@ -94,7 +71,7 @@ def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
     for i in tickers:
         df[f'{i}_target'] = df[f'{i}_open'] + (df[f'{i}_range'] * k)
         for j in range(1, length):
-            if df.at[df.index[j], f'{i}_target'] <= 500:
+            if df.at[df.index[j], f'{i}_target'] < 5000:
                 df.at[df.index[j], f'{i}_target'] = buyable(df.at[df.index[j], f'{i}_target'])
 
     for i in tickers:
@@ -143,7 +120,7 @@ def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
     df.at[df.index[1], 'result_2'] = cagr
     df.at[df.index[2], 'result_2'] = mdd
     
-    df.to_excel("/Users/sugang/Documents/GitHub/backtest/dailycompare/today2.xlsx")
+    df.to_excel("/Users/sugang/Documents/GitHub/backtest/dailycompare/today.xlsx")
     return s, cagr, mdd
 
 df = rkg.get_rank()
