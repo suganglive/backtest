@@ -5,9 +5,8 @@ import pyupbase as pb
 ### 모든 tickers 기본 정보 구하기 ###
 tickers = pyupbit.get_tickers("KRW")
 dct = {}
-h = "10h"
 
-def get_rank():
+def get_rank(h):
     df = pd.DataFrame()
     for i in tickers:
         try:

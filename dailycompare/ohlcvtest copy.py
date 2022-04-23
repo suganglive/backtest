@@ -8,11 +8,12 @@ import math
 tickers = pyupbit.get_tickers("KRW")
 
 ### 백테스트 ###
-k = 0.8
+k = 0.5
 target_v = 0.2
 ma = 10
-slpy = 0.002
+slpy = 0.0015
 am = 20
+h = '11h'
 
 def buyable(price):
     if price - 1 < 0:
@@ -123,5 +124,5 @@ def hihi(k=0.5, target_v = 0.2, am = 20, m = 10):
     df.to_excel("/Users/sugang/Documents/GitHub/backtest/dailycompare/today1.xlsx")
     return s, cagr, mdd
 
-df = rkg.get_rank()
+df = rkg.get_rank(h)
 hihi(k,target_v,am,ma)
