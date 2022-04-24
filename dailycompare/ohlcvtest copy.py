@@ -8,12 +8,12 @@ import math
 tickers = pyupbit.get_tickers("KRW")
 
 ### 백테스트 ###
-k = 0.5
+k = 0.8
 target_v = 0.2
 ma = 10
 slpy = 0.002
 am = 20
-h = '11h'
+h = '10h'
 
 def buyable(price):
     if price - 1 < 0:
